@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 55%;
+            height: 55%;
+            padding: 20px;
+            border: 10px solid orange;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container" id="container1">
+    <select id="mySelectVal01" onchange="SelectValChange01()" style="width: 150px">
+        <option value="and"> and </option>;
+        <option value="or"> or </option>;
+        <option value="null"> null </option>;
+    </select>
+</div>
+<br>
+<div class="container">
+    <a href="javascript:void(0)" onclick="document.getElementById('container2').style.display='block';document.getElementById('fade').style.display='block'">弹窗</a>
+</div>
+
+<div class="container white_content" id="container2" style="display: none">
+    <select id="mySelectVal02" onchange="SelectValChange02()" style="width: 150px">
+        <option value="and"> and </option>;
+        <option value="or"> or </option>;
+        <option value="null"> null </option>;
+    </select>
+</div>
+<div id="fade" class="black_overlay"></div>
+
+</body>
+<script>
+    $('.ui.dropdown').dropdown();
+
+    function SelectValChange01() {
+        if ($("#mySelectVal01").val()=="or"){
+            //$("#mySelectVal02 option[ value='or']").attr("selected", true);
+            $("#mySelectVal02").find("option[value='or']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }else if ($("#mySelectVal01").val()=="and") {
+           // $("#mySelectVal02 option[ value='and']").attr("selected", true);
+            $("#mySelectVal02").find("option[value='and']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }else if ($("#mySelectVal01").val()=="null") {
+           // $("#mySelectVal02 option[ value='null']").attr("selected", true);
+            $("#mySelectVal02").find("option[value='null']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }
+        else{
+            console.log("操作失败");
+        }
+
+    }
+    function SelectValChange02() {
+        if ($("#mySelectVal02").val()=="or"){
+            $("#mySelectVal01").find("option[value='or']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }else if ($("#mySelectVal02").val()=="and") {
+            $("#mySelectVal01").find("option[value='and']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }else if ($("#mySelectVal02").val()=="null") {
+            $("#mySelectVal01").find("option[value='null']").prop("selected",true);
+            console.log($("#mySelectVal01").val()+":"+$("#mySelectVal02").val());
+        }
+        else{
+            console.log("操作失败");
+        }
+
+    }
+   /*
+   * <script>
+        //监听选中事件
+        $('#selectExample').change(function(data){
+            //获取选中项的值
+            var value = $("#selectExample option:selected").attr("value");
+            //输出日志
+            console.log("value=%s",value);
+        });
+   *
+   * */
+</script>
+</html>

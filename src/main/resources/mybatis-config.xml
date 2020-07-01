@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<settings>
+    <!--在<settings>标签中开启驼峰命名规则，默认为false-->
+    <setting name="mapUnderscoreToCamelCase" value="true"></setting>
+    <!--配置JdbcTypeForNull的值，默认值为other,但是Oracle无法识别other类型，此时可以把other改为null
+        也可以在对应属性后面加#{xxx,jdbcType=null}
+    -->
+    <setting name="jdbcTypeForNull" value="NULL"/>
+    <!--开启延时加载-->
+    <setting name="lazyLoadingEnabled" value="true"/>
+    <!--开启时，任一方法的调用都会加载该对象的所有延迟加载属性。 否则，每个延迟加载属性会按需加载-->
+    <setting name="aggressiveLazyLoading" value="false"/>
+    <!--开启控制台打印sql-->
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+    <!--允许开启缓存，默认为true；false是关闭缓存（二级缓存关闭，一级缓存可用）-->
+    <setting name="cacheEnabled" value="true"/>
+</settings>
+</configuration>
+    

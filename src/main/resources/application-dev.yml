@@ -1,0 +1,50 @@
+server:
+  port: 8089
+#--------------JDBC基本配置信息--------------------#
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    #jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://localhost:3306/personalblog?useUnicode=true&characterEncoding=utf8&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    maxActive: 10
+#    schema:
+#      - classpath:sql/departments.sql
+#    initialization-mode: always
+
+
+  thymeleaf:
+    mode: html
+    cache: false
+    servlet:
+      content-type: text/html
+    encoding: utf-8
+
+#----------------配置mybatis---------------------#
+mybatis:
+  check-config-location: true
+  type-aliases-package: com.it.personalblog1_0.entity
+  #引入相关配置文件
+  config-location: classpath:/mybatis-config.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+#-----------------------------------#
+logging:
+  level:
+    root: info
+    com.it.personalblog1_0: debug
+  file:
+    name: log/blog.log
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=coutSql
+mapper:
+  not-empty: false
+  identity: MYSQL
+
+
